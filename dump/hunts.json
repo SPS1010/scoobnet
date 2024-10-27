@@ -1,0 +1,14 @@
+{
+  "hunt-1234": {
+    "huntName": "Scooby Snacks Are Wrong",
+    "huntActive": true,
+    "huntBanner": "url",
+    "huntOwner": "Anonymous"
+  },
+  "hunt-5678": {
+    "huntName": "Scooby Snacks Are Missing", 
+    "huntActive": false,
+    "huntBanner": "url",
+    "huntOwner": "Anonymous"
+  }
+}
