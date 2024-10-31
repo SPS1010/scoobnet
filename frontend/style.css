@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.background {
+  background: url("UIUX.png") no-repeat center center/cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.content {
+  height: 400px;
+  width: 900px;
+  border: 2px solid #21ef80;
+  border-radius: 25px;
+  margin-bottom: 150px;
+  display: flex;
+  justify-content: center;
+}
+
+.retro-text {
+  font-family: "Press Start 2P", serif;
+  font-size: 3.2rem;
+  color: #ff4ef2;
+  position: relative;
+  margin-top: 50px;
+}
+
+/* Pink and Green Shadow */
+.retro-text::before,
+.retro-text::after {
+  content: "SCOOB.NET";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.retro-text::before {
+  color: #04ff88;
+  transform: translate(5px, 5px);
+}
+
+/* .retro-text::after {
+  color: #ff4ef2;
+  transform: translate(-5px, -5px);
+} */
+
+/* Star Placeholder Styling */
+.star {
+  width: 115px;
+  height: 115px;
+
+  /* background-color: yellow; */
+  /* clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); */
+  background-image: url("star.png");
+  background-size: cover;
+  position: absolute;
+  animation: bounce 1s infinite alternate ease-in-out;
+}
+
+.star-left {
+  left: 5%;
+  opacity: 0.5;
+}
+
+.star-right {
+  right: 5%;
+  opacity: 0.5;
+}
+
+.star1 {
+  top: 14%;
+  animation-delay: 0s;
+  width: 115px;
+  height: 40px;
+  margin-left: -20px;
+}
+.star2 {
+  top: 27%;
+  animation-delay: 0.2s;
+  width: 115px;
+  height: 90px;
+}
+.star3 {
+  top: 42%;
+  animation-delay: 0.4s;
+  width: 120px;
+  height: 120px;
+  margin-left: -50px;
+}
+.star4 {
+  top: 14%;
+  animation-delay: 0.1s;
+  width: 115px;
+  height: 40px;
+  margin-right: 1px;
+}
+.star5 {
+  top: 27%;
+  animation-delay: 0.4s;
+  width: 115px;
+  height: 90px;
+  margin-right: 60px;
+}
+.star6 {
+  top: 42%;
+  animation-delay: 0.6s;
+  width: 120px;
+  height: 120px;
+  margin-right: 30px;
+}
+
+/* Bouncing animation */
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
