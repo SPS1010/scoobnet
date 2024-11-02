@@ -13,19 +13,21 @@
         <div class="form-container">
             <h1><span class="highlight">LOG</span> IN</h1>
             <form>
-                <input type="text" placeholder="ENTER USERNAME" required>
-                <input type="password" placeholder="ENTER PASSWORD" required>
+                <input type="text" placeholder="Enter Username" id="username" required>
+                <input type="password" placeholder="Enter Password" id="password" required>
                 <div class="signup-link">
-                    <p>DON'T HAVE AN ACCOUNT? CLICK <a href="#">SIGN UP</a> TO CREATE ONE</p>
+                    <button type="button" class="signup-button">SIGN UP</button>
                 </div>
+                <button type="submit" class="proceed-button" id="proceedButton" disabled>PROCEED</button>
             </form>
         </div>
 
         <div class="image-placeholder">
-            <!-- Placeholder for Image -->
             <img src="images/login.png" alt="Login Icon">
         </div>
     </div>
+
+    <script src="login.js"></script>
 </body>
 
 </html>
