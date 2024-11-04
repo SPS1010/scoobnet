@@ -25,7 +25,7 @@
     <script>
         async function fetchHunts() {
             try {
-                const response = await fetch('/backend/hunts');
+                const response = await fetch('/api/hunts');
                 const data = await response.json();
                 const huntsContainer = document.getElementById('hunts-container');
                 

@@ -29,7 +29,7 @@ def message():
         return jsonify({"error": "No message provided"}), 400
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-4",
+            model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": SYS_PROMPT},
                 {"role": "user", "content": user_message}
