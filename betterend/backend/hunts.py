@@ -20,7 +20,7 @@ def savedb(data):
     with open(DB_FILE, 'w') as file:
         json.dump(data, file, indent=4)
 
-@app.route('/create-hunt', methods=['POST'])
+@app.route('/api/create-hunt', methods=['POST'])
 def createHunt():
     data = request.json
     hunt_id = genid()
@@ -36,7 +36,7 @@ def createHunt():
     savedb(db)
     return jsonify({"message": "Hunt created", "hunt-id": hunt_id}), 201
 
-@app.route('/hunts', methods=['GET'])
+@app.route('/api/hunts', methods=['GET'])
 def getHunts():
     db = loaddb()
     hunts_list = [{"huntID": k, **v} for k, v in db.items()]
