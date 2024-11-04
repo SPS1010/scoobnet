@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hunts - Scooby-Doo Mystery Hunter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="title-bar">
+            <span>Scooby-Doo Mystery Hunter - Hunts</span>
+            <button class="close-button">X</button>
+        </div>
+        <div class="content">
+            <nav class="nav-bar">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="hunts.html" class="nav-item active">Hunts</a>
+                <a href="posts.html" class="nav-item">Posts</a>
+                <a href="ai-chat.html" class="nav-item">AI Assistant</a>
+            </nav>
+            <div id="hunts-container"></div>
+        </div>
+    </div>
+    <script>
+        async function fetchHunts() {
+            try {
+                const response = await fetch('/backend/hunts');
+                const data = await response.json();
+                const huntsContainer = document.getElementById('hunts-container');
+                
+                data.hunts.forEach(hunt => {
+                    const huntElement = document.createElement('div');
+                    huntElement.className = 'window';
+                    huntElement.innerHTML = `
+                        <div class="window-title">${hunt.huntName}</div>
+                        <div class="window-content">
+                            <p><strong>Owner:</strong> ${hunt.huntOwner}</p>
+                            <p><strong>Status:</strong> ${hunt.huntActive ? 'Active' : 'Inactive'}</p>
+                            <p><strong>Description:</strong> ${hunt.huntDesc}</p>
+                            <img src="${hunt.huntBanner}" alt="${hunt.huntName}" style="width:100%;height:100px;object-fit:cover;">
+                        </div>
+                    `;
+                    huntsContainer.appendChild(huntElement);
+                });
+            } catch (error) {
+                console.error('Error fetching hunts:', error);
+            }
+        }
+
+        fetchHunts();
+    </script>
+</body>
+</html>
