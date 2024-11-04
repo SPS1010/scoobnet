@@ -21,7 +21,7 @@ def savedb(data):
     with open(PDB_FILE, 'w') as file:
         json.dump(data, file, indent=4)
 
-@app.route('/create-post', methods=['POST'])
+@app.route('/api/create-post', methods=['POST'])
 def createPost():
     data = request.json
     post_id = genid()
@@ -39,7 +39,7 @@ def createPost():
     
     return jsonify({"message": "Post created", "post-id": post_id}), 201
 
-@app.route('/posts', methods=['GET'])
+@app.route('/api/posts', methods=['GET'])
 def getPosts():
     db = loaddb()
     posts_list = list(db.values())
