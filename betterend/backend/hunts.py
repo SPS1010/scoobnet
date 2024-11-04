@@ -36,7 +36,7 @@ def createHunt():
     savedb(db)
     return jsonify({"message": "Hunt created", "hunt-id": hunt_id}), 201
 
-@app.route('/hunts', methods=['GET'])
+@app.route('/api/hunts', methods=['GET'])
 def getHunts():
     db = loaddb()
     hunts_list = [{"huntID": k, **v} for k, v in db.items()]
