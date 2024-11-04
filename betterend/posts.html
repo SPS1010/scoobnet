@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScoobNet | Posts</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="title-bar">
+            <span>ScoobNet - Posts</span>
+            <button class="close-button">X</button>
+        </div>
+        <div class="content">
+            <nav class="nav-bar">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="hunts.html" class="nav-item">Hunts</a>
+                <a href="posts.html" class="nav-item active">Posts</a>
+                <a href="ai-chat.html" class="nav-item">AI Assistant</a>
+            </nav>
+            <div id="posts-container"></div>
+        </div>
+    </div>
+    <script>
+        async function fetchPosts() {
+            try {
+                const response = await fetch('/api/posts');
+                const data = await response.json();
+                const postsContainer = document.getElementById('posts-container');
+                
+                data.forEach(post => {
+                    const postElement = document.createElement('div');
+                    postElement.className = 'window';
+                    postElement.innerHTML = `
+                        <div class="window-title">${post.username}</div>
+                        <div class="window-content">
+                            <p>${post.postText}</p>
+                            <p><small>${new Date(post.timestamp).toLocaleString()}</small></p>
+                        </div>
+                    `;
+                    postsContainer.appendChild(postElement);
+                });
+            } catch (error) {
+                console.error('Error fetching posts:', error);
+            }
+        }
+
+        fetchPosts();
+    </script>
+</body>
+</html>
