@@ -22,7 +22,7 @@ def savedb(data):
         json.dump(data, file, indent=4)
 
 @app.route('/create-post', methods=['POST'])
-def postPost():
+def createPost():
     data = request.json
     post_id = genid()
     timestamp = datetime.now().isoformat()
@@ -38,6 +38,12 @@ def postPost():
     savedb(db)
     
     return jsonify({"message": "Post created", "post-id": post_id}), 201
+
+@app.route('/posts', methods=['GET'])
+def getPosts():
+    db = loaddb()
+    posts_list = list(db.values())
+    return jsonify(posts_list)
 
 if __name__ == '__main__':
     app.run(debug=True)

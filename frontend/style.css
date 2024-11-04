@@ -36,15 +36,17 @@ html {
   border-radius: 25px;
   margin-bottom: 150px;
   display: flex;
+  flex-direction: column; /* Stack text and button container vertically */
   justify-content: center;
+  align-items: center; /* Center align items */
 }
 
 .retro-text {
   font-family: "Press Start 2P", serif;
-  font-size: 3.2rem;
+  font-size: 3.5rem;
   color: #ff4ef2;
   position: relative;
-  margin-top: 50px;
+  margin-top: -115px;
 }
 
 /* Pink and Green Shadow */
@@ -62,18 +64,41 @@ html {
   transform: translate(5px, 5px);
 }
 
-/* .retro-text::after {
-  color: #ff4ef2;
-  transform: translate(-5px, -5px);
-} */
+/* Button Container Styles */
+.button-container {
+  display: flex; /* Align buttons horizontally */
+  margin-top: 120px; /* Space between text and buttons */
+}
+
+.pushable {
+  background: transparent; /* Make button background transparent */
+  border: 2px solid #21ef80; /* Add border color */
+  border-radius: 12px;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+  margin: 0 15px; /* Space between buttons */
+  text-decoration: none; /* Remove underline from anchor tags */
+}
+
+.front {
+  display: block;
+  padding: 17px 43px;
+  border-radius: 12px;
+  font-size: 1.25rem;
+  color: #585eff;
+  transform: translateY(-6px);
+  margin-top: 5px;
+}
+
+.pushable:active .front {
+  transform: translateY(-2px);
+}
 
 /* Star Placeholder Styling */
 .star {
   width: 115px;
   height: 115px;
-
-  /* background-color: yellow; */
-  /* clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); */
   background-image: url("images/star.png");
   background-size: cover;
   position: absolute;
