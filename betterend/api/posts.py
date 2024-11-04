@@ -1,14 +1,8 @@
 import json
-import random
-import string
-from flask import Flask, request, jsonify
-from datetime import datetime
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 PDB_FILE = 'posts.json'
-
-def genid():
-    return ''.join(random.choices(string.digits, k=10))
 
 def loaddb():
     try:
@@ -17,33 +11,10 @@ def loaddb():
     except FileNotFoundError:
         return {}
 
-def savedb(data):
-    with open(PDB_FILE, 'w') as file:
-        json.dump(data, file, indent=4)
-
-@app.route('/api/create-post', methods=['POST'])
-def createPost():
-    data = request.json
-    post_id = genid()
-    timestamp = datetime.now().isoformat()
-    
-    new_post = {
-        "username": data.get("username", "Anonymous"),
-        "postText": data.get("postText", ""),
-        "timestamp": timestamp
-    }
-    
-    db = loaddb()
-    db[post_id] = new_post
-    savedb(db)
-    
-    return jsonify({"message": "Post created", "post-id": post_id}), 201
-
 @app.route('/api/posts', methods=['GET'])
-def getPosts():
+def handler():
     db = loaddb()
     posts_list = list(db.values())
     return jsonify(posts_list)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+handler = app
